@@ -1,91 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Formulário de cadastro de programadores">
-  <title>Cadastro de Programadores</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main class="container">
-    <section class="card" aria-labelledby="page-title">
-      <header class="header">
-        <p class="eyebrow">Comunidade dev</p>
-        <h1 id="page-title">Cadastro de programadores</h1>
-        <p>Compartilhe suas experiências e conecte-se com outros profissionais da área.</p>
-      </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Formulário de cadastro de programadores com validação"
+    />
+    <title>Cadastro de Programadores</title>
+    <link rel="stylesheet" href="src/styles/global.css" />
+    <link rel="stylesheet" href="src/styles/form.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card" aria-labelledby="page-title">
+        <header class="header">
+          <p class="eyebrow">Comunidade dev</p>
+          <h1 id="page-title">Cadastro de programadores</h1>
+          <p>
+            Compartilhe sua experiência e conecte-se com profissionais da área.
+          </p>
+        </header>
 
-      <form id="developer-form" novalidate>
-        <div class="grid two-columns">
-          <div class="field">
-            <label for="firstName">Nome <span aria-hidden="true">*</span></label>
-            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required minlength="2" maxlength="50" aria-describedby="firstName-error">
-            <small id="firstName-error" class="error-message" role="alert"></small>
+        <form id="developer-form" novalidate>
+          <div class="field-group two-columns">
+            <div class="field">
+              <label for="firstName">Nome <span aria-hidden="true">*</span></label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                autocomplete="given-name"
+                maxlength="50"
+                required
+                aria-describedby="firstName-error"
+              />
+              <small id="firstName-error" class="error-message" role="alert"></small>
+            </div>
+
+            <div class="field">
+              <label for="lastName">Sobrenome <span aria-hidden="true">*</span></label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                autocomplete="family-name"
+                maxlength="80"
+                required
+                aria-describedby="lastName-error"
+              />
+              <small id="lastName-error" class="error-message" role="alert"></small>
+            </div>
           </div>
 
           <div class="field">
-            <label for="lastName">Sobrenome <span aria-hidden="true">*</span></label>
-            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required minlength="2" maxlength="80" aria-describedby="lastName-error">
-            <small id="lastName-error" class="error-message" role="alert"></small>
+            <label for="email">E-mail <span aria-hidden="true">*</span></label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required
+              aria-describedby="email-error"
+            />
+            <small id="email-error" class="error-message" role="alert"></small>
           </div>
-        </div>
 
-        <div class="field">
-          <label for="email">E-mail <span aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email-error">
-          <small id="email-error" class="error-message" role="alert"></small>
-        </div>
+          <fieldset class="field-group">
+            <legend>Qual é o seu foco de atuação? <span aria-hidden="true">*</span></legend>
+            <div class="options inline-options">
+              <label>
+                <input type="radio" name="role" value="Back-End" />
+                <span>Back-End</span>
+              </label>
+              <label>
+                <input type="radio" name="role" value="Front-End" />
+                <span>Front-End</span>
+              </label>
+              <label>
+                <input type="radio" name="role" value="Full-Stack" />
+                <span>Full-Stack</span>
+              </label>
+            </div>
+            <small id="role-error" class="error-message" role="alert"></small>
+          </fieldset>
 
-        <fieldset>
-          <legend>Qual é o seu foco de atuação? <span aria-hidden="true">*</span></legend>
-          <div class="options inline-options">
-            <label><input type="radio" name="role" value="Back-End" required> Back-End</label>
-            <label><input type="radio" name="role" value="Front-End"> Front-End</label>
-            <label><input type="radio" name="role" value="Full-Stack"> Full-Stack</label>
+          <div class="field">
+            <label for="seniority">Senioridade <span aria-hidden="true">*</span></label>
+            <select id="seniority" name="seniority" required aria-describedby="seniority-error">
+              <option value="">Selecione uma opção</option>
+              <option value="Júnior">Júnior</option>
+              <option value="Pleno">Pleno</option>
+              <option value="Sênior">Sênior</option>
+              <option value="Especialista">Especialista</option>
+            </select>
+            <small id="seniority-error" class="error-message" role="alert"></small>
           </div>
-          <small id="role-error" class="error-message" role="alert"></small>
-        </fieldset>
 
-        <div class="field">
-          <label for="seniority">Senioridade <span aria-hidden="true">*</span></label>
-          <select id="seniority" name="seniority" required aria-describedby="seniority-error">
-            <option value="">Selecione uma opção</option>
-            <option value="Júnior">Júnior</option>
-            <option value="Pleno">Pleno</option>
-            <option value="Sênior">Sênior</option>
-            <option value="Especialista">Especialista</option>
-          </select>
-          <small id="seniority-error" class="error-message" role="alert"></small>
-        </div>
+          <fieldset class="field-group">
+            <legend>Linguagens e tecnologias que utiliza <span aria-hidden="true">*</span></legend>
+            <div class="options checkbox-grid">
+              <label><input type="checkbox" name="languages" value="JavaScript" /> JavaScript</label>
+              <label><input type="checkbox" name="languages" value="TypeScript" /> TypeScript</label>
+              <label><input type="checkbox" name="languages" value="Python" /> Python</label>
+              <label><input type="checkbox" name="languages" value="Java" /> Java</label>
+              <label><input type="checkbox" name="languages" value="C#" /> C#</label>
+              <label><input type="checkbox" name="languages" value="PHP" /> PHP</label>
+              <label><input type="checkbox" name="languages" value="Go" /> Go</label>
+              <label><input type="checkbox" name="languages" value="Ruby" /> Ruby</label>
+            </div>
+            <small id="languages-error" class="error-message" role="alert"></small>
+          </fieldset>
 
-        <fieldset>
-          <legend>Linguagens e tecnologias que utiliza <span aria-hidden="true">*</span></legend>
-          <div class="options checkbox-grid">
-            <label><input type="checkbox" name="languages" value="JavaScript"> JavaScript</label>
-            <label><input type="checkbox" name="languages" value="TypeScript"> TypeScript</label>
-            <label><input type="checkbox" name="languages" value="Python"> Python</label>
-            <label><input type="checkbox" name="languages" value="Java"> Java</label>
-            <label><input type="checkbox" name="languages" value="C#"> C#</label>
-            <label><input type="checkbox" name="languages" value="PHP"> PHP</label>
-            <label><input type="checkbox" name="languages" value="Go"> Go</label>
-            <label><input type="checkbox" name="languages" value="Ruby"> Ruby</label>
+          <div class="field">
+            <label for="experience">Conte mais sobre sua experiência <span aria-hidden="true">*</span></label>
+            <textarea
+              id="experience"
+              name="experience"
+              rows="6"
+              minlength="20"
+              maxlength="1000"
+              required
+              aria-describedby="experience-help experience-error"
+            ></textarea>
+            <small id="experience-help" class="hint">Mínimo de 20 caracteres e máximo de 1.000.</small>
+            <small id="experience-error" class="error-message" role="alert"></small>
           </div>
-          <small id="languages-error" class="error-message" role="alert"></small>
-        </fieldset>
 
-        <div class="field">
-          <label for="experience">Conte mais sobre sua experiência <span aria-hidden="true">*</span></label>
-          <textarea id="experience" name="experience" rows="6" required minlength="20" maxlength="1000" aria-describedby="experience-help experience-error"></textarea>
-          <small id="experience-help" class="hint">Mínimo de 20 caracteres e máximo de 1.000.</small>
-          <small id="experience-error" class="error-message" role="alert"></small>
-        </div>
+          <div id="form-status" class="status" role="status" aria-live="polite"></div>
 
-        <div id="form-status" class="status" role="status" aria-live="polite"></div>
-        <button type="submit">Enviar cadastro</button>
-      </form>
-    </section>
-  </main>
-  <script src="script.js" defer></script>
-</body>
+          <button type="submit">Enviar cadastro</button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
 </html>
